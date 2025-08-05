@@ -1,14 +1,14 @@
 create table users(
-	user_id int auto_increment primary key,
+    user_id int auto_increment primary key,
     username VARCHAR(50) NOT NULL unique,
     email varchar(1000) NOT NULL unique,
     pwd varchar(50)
 );
 
 create table notes(
-	note_id int auto_increment primary key,
+    note_id int auto_increment primary key,
     user_id int NOT NULL,
-	title varchar(1000),
+    title varchar(1000),
     color varchar(100),
     content text,
     is_archived boolean default FALSE,
@@ -60,7 +60,7 @@ CREATE TABLE charts (
 CREATE TABLE charts_data (
     id int auto_increment primary key,
     chart_id int NOT NULL,
-	label varchar(200),
+    label varchar(200),
     value varchar(100),
     color varchar(100),
     foreign key (chart_id) references charts(chart_id) on delete cascade
@@ -68,18 +68,18 @@ CREATE TABLE charts_data (
 
 CREATE TABLE data_exports (
     id int auto_increment primary key,
-	user_id int NOT NULL,
+    user_id int NOT NULL,
     export_time timestamp default CURRENT_TIMESTAMP,
-	file_name varchar(255),
+    file_name varchar(255),
     file_path varchar(255),
     foreign key(user_id) references users(user_id) on delete cascade
 );
 
 CREATE TABLE data_imports (
-	id int auto_increment primary key,
-	user_id int NOT NULL,
+    id int auto_increment primary key,
+    user_id int NOT NULL,
     import_time timestamp default CURRENT_TIMESTAMP,
-	file_name varchar(255),
+    file_name varchar(255),
     file_path varchar(255),
     foreign key(user_id) references users(user_id) on delete cascade
 );
