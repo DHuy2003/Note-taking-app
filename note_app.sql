@@ -12,7 +12,7 @@ create table notes(
     color varchar(100),
     content text,
     is_archived boolean default FALSE,
-	created_at timestamp default CURRENT_TIMESTAMP,
+    created_at timestamp default CURRENT_TIMESTAMP,
     updated_at timestamp default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     foreign key (user_id) references users(user_id) on delete cascade
 );
