@@ -18,7 +18,7 @@ create table notes(
 );
 
 CREATE TABLE tags (
-     id int auto_increment primary key,
+     tag_id int auto_increment primary key,
      name varchar(50) NOT NULL unique
 );
 
@@ -26,8 +26,8 @@ CREATE TABLE note_tags (
     note_id int NOT NULL,
     tag_id int NOT NULL,
     primary key (note_id, tag_id),
-    foreign key (note_id) references notes(id) on delete cascade,
-    foreign key (tag_id) references tags(id) on delete cascade
+    foreign key (note_id) references notes(note_id) on delete cascade,
+    foreign key (tag_id) references tags(tag_id) on delete cascade
 );
 
 CREATE TABLE shared_notes (
@@ -63,7 +63,7 @@ CREATE TABLE charts_data (
 	label varchar(200),
     value varchar(100),
     color varchar(100),
-    foreign key ( chart_id ) references charts( chart_id ) on delete cascade
+    foreign key (chart_id) references charts(chart_id) on delete cascade
 );
 
 CREATE TABLE data_exports (
@@ -72,7 +72,7 @@ CREATE TABLE data_exports (
     export_time timestamp default CURRENT_TIMESTAMP,
 	file_name varchar(255),
     file_path varchar(255),
-    foreign key(user_id) references users(id) on delete cascade
+    foreign key(user_id) references users(user_id) on delete cascade
 );
 
 CREATE TABLE data_imports (
@@ -81,7 +81,7 @@ CREATE TABLE data_imports (
     import_time timestamp default CURRENT_TIMESTAMP,
 	file_name varchar(255),
     file_path varchar(255),
-    foreign key(user_id) references users(id) on delete cascade
+    foreign key(user_id) references users(user_id) on delete cascade
 );
 
 
